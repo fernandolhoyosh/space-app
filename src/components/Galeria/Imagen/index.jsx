@@ -7,9 +7,9 @@ const Figure = styled.figure`
   flex-direction: column;
   margin: 0;
   width: ${(props) => (props.$expandida ? "90%" : "448px")};
-  max-height: 336px;
+  /* max-height: 336px; */
   max-width: 100%;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   & > img {
     max-width: 100%;
     height: ${(props) => (props.$expandida ? "660px" : "256px")};
@@ -50,8 +50,11 @@ const ContainerBotones = styled.div`
 `;
 
 const Imagen = (props) => {
-  const { foto, expandida = false, solicitarZoom } = props;
-  const { id, titulo, path, fuente } = props.foto;
+  const { foto, expandida = false, solicitarZoom, alternarFavorito } = props;
+  const { id, titulo, path, fuente, favorita } = props.foto;
+
+  const iconoFavorito = favorita ? "/iconos/favorito-activo.png" : "/iconos/favorito.png";
+
   return (
     <Figure $expandida={expandida} id={`foto-${id}`}>
       <img src={path} alt={titulo} />
@@ -61,8 +64,8 @@ const Imagen = (props) => {
           <p>{fuente}</p>
         </Figcaption>
         <ContainerBotones>
-          <BotonIcono>
-            <img src="/iconos/favorito.png" alt="Icono Favorito" />
+          <BotonIcono onClick={()=>alternarFavorito(foto)}>
+            <img src={iconoFavorito} alt="Icono Favorito" />
           </BotonIcono>
           { !expandida && <BotonIcono aria-hidden={expandida} onClick={() => solicitarZoom(foto)}>
             <img src="/iconos/expandir.png" alt="Icono Expandir" />

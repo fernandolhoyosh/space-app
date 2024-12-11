@@ -10,11 +10,14 @@ const HeaderEstilizado = styled.header`
   }
 `;
 
-const Cabecera = () => {
+const Cabecera = (props) => {
+
+  const {setFiltroInput} = props
+
   return (
     <HeaderEstilizado>
       <img src="img/logo.png" alt="Logo de Space App" />
-      <CampoTexto />
+      <CampoTexto setFiltroInput={setFiltroInput} />
     </HeaderEstilizado>
   );
 };

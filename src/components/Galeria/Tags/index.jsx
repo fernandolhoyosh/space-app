@@ -25,16 +25,15 @@ const BotonTag = styled.button`
     &:hover {
         border-color: #7B78E5;
     }
-
-
-
 `
 
-const Tags = () => {
+const Tags = (props) => {
+    const {filtrarFotosPorTag} = props
+
     return <ContainerTags>
         <TagTitulo>Buscar por tags:</TagTitulo>
         {tags.map(tag => {
-            return <BotonTag key={tag.id}>{tag.titulo}</BotonTag>
+            return <BotonTag key={tag.id} onClick={()=>filtrarFotosPorTag(tag.id)}>{tag.titulo}</BotonTag>
         })}
     </ContainerTags>
 }

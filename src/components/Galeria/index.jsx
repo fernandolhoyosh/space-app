@@ -19,16 +19,16 @@ const FigureContainer = styled.section`
 `;
 
 const Galeria = (props) => {
-  const { fotos = [], abrirFoto } = props;
+  const { fotos = [], abrirFoto, alternarFavorito, filtrarFotosPorTag } = props;
   return (
     <>
-      <Tags />
+      <Tags filtrarFotosPorTag= {filtrarFotosPorTag} />
       <GaleriaContainer>
         <SeccionFluida>
           <Titulo>Navegue por la galeria</Titulo>
           <FigureContainer>
             {fotos.map((foto) => (
-              <Imagen key={foto.id} foto={foto} solicitarZoom={abrirFoto} />
+              <Imagen key={foto.id} foto={foto} solicitarZoom={abrirFoto} alternarFavorito={alternarFavorito} />
             ))}
           </FigureContainer>
         </SeccionFluida>

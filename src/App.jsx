@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import GlobalStyles from "./components/GlobalStyles";
 import Cabecera from "./components/Cabecera";
@@ -8,6 +8,7 @@ import banner from "./assets/banner.png";
 import Galeria from "./components/Galeria";
 import fotos from "./fotos.json";
 import ModalZoom from "./components/ModalZoom";
+import Footer from "./components/Footer";
 
 const FondoGradiente = styled.div`
   background: linear-gradient(
@@ -38,16 +39,57 @@ const ContenidoGaleria = styled.section`
 `;
 
 const App = () => {
+  const [fotosGaleria, setFotosGaleria] = useState(fotos);
+  const [fotoSeleccionada, setFotoSeleccionada] = useState(null);
+  const [filtroInput, setFiltroInput] = useState("");
+  const [tag, setTag] = useState(0);
 
-const [fotosGaleria, setFotosGaleria] = useState(fotos);
-const [fotoSeleccionada, setFotoSeleccionada] = useState(null);
+  const filtrarFotosPorTag = (idTag) => {
+    setTag(idTag);
+  };
+
+
+  useEffect(() => {
+    const fotosFiltradas = fotos.filter((foto) => {
+      const filtroTag = !tag || foto.tagId === tag;
+      return filtroTag;
+    });
+    setFotosGaleria(fotosFiltradas);
+  }, [tag]);
+
+  useEffect(() => {
+    const fotosFiltradas = fotos.filter((foto) => {
+      const filtroText = !filtroInput || foto.titulo.toLowerCase().includes(filtroInput.toLowerCase());
+      return filtroText;
+    });
+    setFotosGaleria(fotosFiltradas);
+  }, [filtroInput]);
+
+  const alternarFavorito = (foto) => {
+    if (foto.id === fotoSeleccionada?.id) {
+      setFotoSeleccionada({
+        ...fotoSeleccionada,
+        favorita: !foto.favorita,
+      });
+    }
+
+    setFotosGaleria(
+      fotosGaleria.map((fotoGaleria) => {
+        return {
+          ...fotoGaleria,
+          favorita:
+            fotoGaleria.id === foto.id ? !foto.favorita : fotoGaleria.favorita,
+        };
+      })
+    );
+  };
 
   return (
     <>
       <FondoGradiente>
         <GlobalStyles />
         <AppContainer>
-          <Cabecera />
+          <Cabecera setFiltroInput={setFiltroInput} />
           <MainContainer>
             <BarraLateral />
             <ContenidoGaleria>
@@ -55,14 +97,24 @@ const [fotoSeleccionada, setFotoSeleccionada] = useState(null);
                 texto="La galería más completa del espacio"
                 backgroundImage={banner}
               />
-              <Galeria fotos={fotosGaleria} abrirFoto={foto => setFotoSeleccionada(foto)} />
+              <Galeria
+                fotos={fotosGaleria}
+                abrirFoto={(foto) => setFotoSeleccionada(foto)}
+                alternarFavorito={alternarFavorito}
+                filtrarFotosPorTag={filtrarFotosPorTag}
+              />
             </ContenidoGaleria>
           </MainContainer>
         </AppContainer>
-        <ModalZoom foto={fotoSeleccionada} />
+        <ModalZoom
+          foto={fotoSeleccionada}
+          alCerrar={() => setFotoSeleccionada(null)}
+          alternarFavorito={alternarFavorito}
+        />
+        <Footer />
       </FondoGradiente>
     </>
   );
-}
+};
 
 export default App;

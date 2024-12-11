@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components"
 import Search from "./search.png"
 
@@ -35,10 +36,13 @@ const IconoBuscar = styled.img`
     height: 38px;
 `
 
-const CampoTexto = () => {
+const CampoTexto = (props) => {
+
+    const {setFiltroInput} = props
+
     return (
         <ContainerStyles>
-            <InputStyles type="text" placeholder="¿Qué estas buscando?" />
+            <InputStyles type="text" placeholder="¿Qué estas buscando?" onChange={(e) => setFiltroInput(e.target.value)} />
             <IconoBuscar src={Search} alt="Icono Lupa" />
         </ContainerStyles>
     )
