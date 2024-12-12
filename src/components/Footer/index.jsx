@@ -14,6 +14,10 @@ const FooterStyle = styled.footer`
         font-size: 1rem;
         margin: 0;
     }
+
+    @media (max-width: 744px) {
+        margin-top: 48px;
+    }
 `;
 
 const ContainerRedesSociales = styled.ul`

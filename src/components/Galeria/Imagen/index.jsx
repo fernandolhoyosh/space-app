@@ -7,7 +7,6 @@ const Figure = styled.figure`
   flex-direction: column;
   margin: 0;
   width: ${(props) => (props.$expandida ? "90%" : "448px")};
-  /* max-height: 336px; */
   max-width: 100%;
   /* flex-grow: 1; */
   & > img {
@@ -15,6 +14,14 @@ const Figure = styled.figure`
     height: ${(props) => (props.$expandida ? "660px" : "256px")};
     border-radius: 20px 20px 0 0;
   }
+
+  @media (max-width: 744px) {
+    width: ${(props) => (props.$expandida ? "100%" : "245px")};
+    & > img {
+      height: ${(props) => (props.$expandida ? "460px" : "142px")};
+    }
+  }
+
 `;
 
 const ContainerFooter = styled.footer`
@@ -24,6 +31,10 @@ const ContainerFooter = styled.footer`
   justify-content: space-between;
   padding: 16px;
   background-color: #001634;
+
+  @media (max-width: 744px) {
+    padding: 14px;
+  }
 `;
 
 const Figcaption = styled.figcaption`
@@ -31,7 +42,7 @@ const Figcaption = styled.figcaption`
   p {
     margin: 0;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   h3 {
@@ -41,12 +52,29 @@ const Figcaption = styled.figcaption`
   p {
     flex-grow: 1;
   }
+
+  @media (max-width: 744px) {
+    h3 {
+      font-size: 14px;
+    }
+
+    p {
+      font-size: 10px;
+    }
+  }
+
+
 `;
 
 const ContainerBotones = styled.div`
   display: flex;
   align-items: end;
   gap: 24px;
+
+  @media (max-width: 744px) {
+    gap: 16px;
+  }
+
 `;
 
 const Imagen = (props) => {

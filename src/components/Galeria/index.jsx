@@ -7,9 +7,15 @@ import Imagen from "./Imagen";
 const GaleriaContainer = styled.div`
   display: flex;
   gap: 24px;
+
+  @media (max-width: 744px) {
+    gap: 20px;
+  }
 `;
 const SeccionFluida = styled.section`
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
 `;
 
 const FigureContainer = styled.section`

@@ -17,15 +17,22 @@ const DialogStyle = styled.dialog`
   border: 0;
   display: flex;
   justify-content: center;
-  width: 1156px;
-  height: 740px;
+  width: 90%;
   top: 100px;
   background: transparent;
 
+  form {
+    width:0;
+  }
   form > button {
     position: relative;
     top: 20px;
     right: 60px;
+  }
+
+  @media (max-width: 744px) {
+    top: 150px;
+    width: 96%;
   }
 `;
 

@@ -13,6 +13,10 @@ const Foto = styled.img`
     border-radius: 20px;
     max-width: 212px;
     height: 158px;
+
+    @media (max-width: 744px) {
+        max-width: 156px;
+    }
 `
 
 const BotonVerMas = styled.button`

@@ -2,6 +2,9 @@ import styled from "styled-components";
 import ItemNavegacion from "../ItemNavegacion";
 
 const ListaStyles = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 29px;
   margin: 0;
   padding: 0;
   list-style: none;

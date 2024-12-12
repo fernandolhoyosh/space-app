@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 const ItemListStyles = styled.li`
     font-size: 24px;
-    margin-bottom: 30px;
     line-height: 28px;
     display: flex;
     align-items: center;

@@ -4,11 +4,17 @@ import Search from "./search.png"
 
 const ContainerStyles = styled.div`
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    width: 50%;
+
+    @media (max-width: 744px) {
+        width: 100%;
+    }
 `
 
 const InputStyles = styled.input`
-    width: 652px;
+    width: 100%;
     height: 56px;
     border-radius: 10px;
     border: 2px solid #7B78E5;
@@ -17,7 +23,6 @@ const InputStyles = styled.input`
     color: #D9D9D9;
     font-weight: 400;
     font-size: 20px;
-    line-height: 20px;
     outline: none;
     padding-right: 50px;
     padding-left: 16px;
@@ -30,7 +35,7 @@ const InputStyles = styled.input`
 
 const IconoBuscar = styled.img`
     position: absolute;
-    top: 10px;
+    top: 17px;
     right: 10px;
     width: 38px !important;
     height: 38px;

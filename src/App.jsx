@@ -22,20 +22,49 @@ const FondoGradiente = styled.div`
 `;
 
 const AppContainer = styled.div`
+  padding: 0 24px;
   width: 1440px;
   max-width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
+
+  @media (max-width: 744px) {
+    padding: 0 18px;
+  }
 `;
 
 const MainContainer = styled.main`
   display: flex;
-  gap: 24px;
+  flex-direction: column;
+  gap: 56px;
+`;
+
+const ContainerBarraBanner = styled.div`
+  display: flex;
+  gap: 14px;
+
+  @media (max-width: 744px) {
+    gap: 52px;
+  }
 `;
 
 const ContenidoGaleria = styled.section`
   display: flex;
+  margin-left: 15%;
   flex-direction: column;
   flex-grow: 1;
+
+  @media (max-width: 1030px) {
+    margin-left: 8%;
+  }
+
+  @media (max-width: 800px) {
+    margin-left: 2%;
+  }
+
+  @media (max-width: 744px) {
+    margin-left: 0;
+  }
 `;
 
 const App = () => {
@@ -48,7 +77,6 @@ const App = () => {
     setTag(idTag);
   };
 
-
   useEffect(() => {
     const fotosFiltradas = fotos.filter((foto) => {
       const filtroTag = !tag || foto.tagId === tag;
@@ -59,7 +87,9 @@ const App = () => {
 
   useEffect(() => {
     const fotosFiltradas = fotos.filter((foto) => {
-      const filtroText = !filtroInput || foto.titulo.toLowerCase().includes(filtroInput.toLowerCase());
+      const filtroText =
+        !filtroInput ||
+        foto.titulo.toLowerCase().includes(filtroInput.toLowerCase());
       return filtroText;
     });
     setFotosGaleria(fotosFiltradas);
@@ -91,12 +121,14 @@ const App = () => {
         <AppContainer>
           <Cabecera setFiltroInput={setFiltroInput} />
           <MainContainer>
-            <BarraLateral />
-            <ContenidoGaleria>
+            <ContainerBarraBanner>
+              <BarraLateral />
               <Banner
                 texto="La galería más completa del espacio"
                 backgroundImage={banner}
               />
+            </ContainerBarraBanner>
+            <ContenidoGaleria>
               <Galeria
                 fotos={fotosGaleria}
                 abrirFoto={(foto) => setFotoSeleccionada(foto)}

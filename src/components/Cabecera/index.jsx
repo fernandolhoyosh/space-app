@@ -3,10 +3,20 @@ import CampoTexto from "../CampoTexto";
 
 const HeaderEstilizado = styled.header`
   display: flex;
+  width: 100%;
+  gap: 58px;
   justify-content: space-between;
   padding: 60px 0;
+  box-sizing: border-box;
   img {
     width: 212px;
+  }
+
+  @media (max-width: 744px) {
+    padding: 45px 0;
+    img {
+      width: 190px;
+    }
   }
 `;
 
