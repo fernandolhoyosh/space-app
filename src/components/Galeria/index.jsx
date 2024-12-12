@@ -8,7 +8,7 @@ const GaleriaContainer = styled.div`
   display: flex;
   gap: 24px;
 
-  @media (max-width: 744px) {
+  @media (min-width: 744px) and (max-width: 1425px) {
     gap: 20px;
   }
 `;

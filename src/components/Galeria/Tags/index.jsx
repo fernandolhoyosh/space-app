@@ -7,7 +7,7 @@ const ContainerTags = styled.div`
     gap: 24px;
     font-size: 24px;
 
-    @media (max-width: 744px) {
+    @media (min-width: 744px) and (max-width: 1425px) {
         gap: 16px;
   }
 `
@@ -31,7 +31,7 @@ const BotonTag = styled.button`
         border-color: #7B78E5;
     }
 
-    @media (max-width: 744px) {
+    @media (min-width: 744px) and (max-width: 1425px) {
         font-size: 20px;
     }
 `

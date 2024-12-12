@@ -8,17 +8,24 @@ const Figure = styled.figure`
   margin: 0;
   width: ${(props) => (props.$expandida ? "90%" : "448px")};
   max-width: 100%;
-  /* flex-grow: 1; */
+  flex-grow: 1;
   & > img {
     max-width: 100%;
     height: ${(props) => (props.$expandida ? "660px" : "256px")};
     border-radius: 20px 20px 0 0;
   }
 
-  @media (max-width: 744px) {
+  @media (min-width: 1112px) and (max-width: 1425px) {
+    width: ${(props) => (props.$expandida ? "100%" : "350px")};
+    & > img {
+      height: ${(props) => (props.$expandida ? "560px" : "200px")};
+    }
+  }
+
+  @media (min-width: 744px) and (max-width: 1111px) {
     width: ${(props) => (props.$expandida ? "100%" : "245px")};
     & > img {
-      height: ${(props) => (props.$expandida ? "460px" : "142px")};
+      height: ${(props) => (props.$expandida ? "460px" : "150px")};
     }
   }
 
@@ -32,7 +39,7 @@ const ContainerFooter = styled.footer`
   padding: 16px;
   background-color: #001634;
 
-  @media (max-width: 744px) {
+  @media (min-width: 744px) and (max-width: 1425px) {
     padding: 14px;
   }
 `;
@@ -53,7 +60,7 @@ const Figcaption = styled.figcaption`
     flex-grow: 1;
   }
 
-  @media (max-width: 744px) {
+  @media (min-width: 744px) and (max-width: 1425px) {
     h3 {
       font-size: 14px;
     }
@@ -62,8 +69,6 @@ const Figcaption = styled.figcaption`
       font-size: 10px;
     }
   }
-
-
 `;
 
 const ContainerBotones = styled.div`
@@ -71,10 +76,9 @@ const ContainerBotones = styled.div`
   align-items: end;
   gap: 24px;
 
-  @media (max-width: 744px) {
+  @media (min-width: 744px) and (max-width: 1425px) {
     gap: 16px;
   }
-
 `;
 
 const Imagen = (props) => {

@@ -15,7 +15,7 @@ const FooterStyle = styled.footer`
         margin: 0;
     }
 
-    @media (max-width: 744px) {
+    @media (min-width: 744px) and (max-width: 1425px) {
         margin-top: 48px;
     }
 `;

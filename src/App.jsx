@@ -28,7 +28,7 @@ const AppContainer = styled.div`
   margin: 0 auto;
   box-sizing: border-box;
 
-  @media (max-width: 744px) {
+  @media (min-width: 744px) and (max-width: 1425px) {
     padding: 0 18px;
   }
 `;
@@ -43,7 +43,7 @@ const ContainerBarraBanner = styled.div`
   display: flex;
   gap: 14px;
 
-  @media (max-width: 744px) {
+  @media (min-width: 744px) and (max-width: 1425px) {
     gap: 52px;
   }
 `;
@@ -58,11 +58,11 @@ const ContenidoGaleria = styled.section`
     margin-left: 8%;
   }
 
-  @media (max-width: 800px) {
+  @media (min-width: 800px) and (max-width: 1029px) {
     margin-left: 2%;
   }
 
-  @media (max-width: 744px) {
+  @media (min-width: 744px) and (max-width: 799px) {
     margin-left: 0;
   }
 `;

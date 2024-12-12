@@ -14,7 +14,7 @@ const Foto = styled.img`
     max-width: 212px;
     height: 158px;
 
-    @media (max-width: 744px) {
+    @media (min-width: 744px) and (max-width: 1425px) {
         max-width: 156px;
     }
 `

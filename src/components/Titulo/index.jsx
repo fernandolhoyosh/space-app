@@ -5,7 +5,7 @@ const Titulo = styled.h2`
     color: #7b78e5;
     text-align: ${props => props.$align ? props.$align : "left" };
 
-    @media (max-width: 744px) {
+    @media (min-width: 744px) and (max-width: 1425px) {
         font-size: 28px;
     }
 `

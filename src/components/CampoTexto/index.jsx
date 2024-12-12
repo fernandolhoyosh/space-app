@@ -8,7 +8,7 @@ const ContainerStyles = styled.div`
     align-items: center;
     width: 50%;
 
-    @media (max-width: 744px) {
+    @media (min-width: 744px) and (max-width: 1425px) {
         width: 100%;
     }
 `

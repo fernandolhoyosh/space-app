@@ -12,7 +12,7 @@ const HeaderEstilizado = styled.header`
     width: 212px;
   }
 
-  @media (max-width: 744px) {
+  @media (min-width: 744px) and (max-width: 1425px) {
     padding: 45px 0;
     img {
       width: 190px;

@@ -30,7 +30,7 @@ const DialogStyle = styled.dialog`
     right: 60px;
   }
 
-  @media (max-width: 744px) {
+  @media (min-width: 744px) and (max-width: 1425px) {
     top: 150px;
     width: 96%;
   }

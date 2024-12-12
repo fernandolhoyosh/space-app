@@ -8,7 +8,7 @@ const BotonIcono = styled.button`
   border: none;
   cursor: pointer;
 
-  @media(max-width: 744px) {
+  @media(min-width: 744px) and (max-width: 1425px) {
     & > img {
       width: 16px;
       height: 16px;
