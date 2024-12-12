@@ -6,6 +6,7 @@ import Imagen from "./Imagen";
 
 const GaleriaContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   gap: 24px;
 
   @media (min-width: 744px) and (max-width: 1425px) {
