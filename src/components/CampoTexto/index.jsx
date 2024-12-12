@@ -8,9 +8,10 @@ const ContainerStyles = styled.div`
     align-items: center;
     width: 50%;
 
-    @media (min-width: 744px) and (max-width: 1425px) {
+    @media (max-width: 1425px) {
         width: 100%;
     }
+
 `
 
 const InputStyles = styled.input`
@@ -39,6 +40,14 @@ const IconoBuscar = styled.img`
     right: 10px;
     width: 38px !important;
     height: 38px;
+
+    @media (min-width: 744px) and (max-width: 1425px) {
+        top: 14px;
+    }
+
+    @media (min-width: 1px) and (max-width: 743px) {
+        top: 10px;
+    }
 `
 
 const CampoTexto = (props) => {

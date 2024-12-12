@@ -29,6 +29,27 @@ const Figure = styled.figure`
     }
   }
 
+  @media (min-width: 1px) and (max-width: 743px) {
+    width: ${(props) => (props.$expandida ? "100%" : "311px")};
+    & > img {
+      height: ${(props) => (props.$expandida ? "460px" : "180px")};
+    }
+  }
+
+  @media (min-width: 460px) and (max-width: 710px) {
+    width: ${(props) => (props.$expandida ? "100%" : "311px")};
+    & > img {
+      height: ${(props) => (props.$expandida ? "460px" : "240px")};
+    }
+  }
+
+  @media (max-width: 459px) {
+    width: ${(props) => (props.$expandida ? "100%" : "311px")};
+    & > img {
+      height: ${(props) => (props.$expandida ? "220px" : "240px")};
+    }
+  }
+
 `;
 
 const ContainerFooter = styled.footer`

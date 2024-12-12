@@ -34,6 +34,13 @@ const DialogStyle = styled.dialog`
     top: 150px;
     width: 96%;
   }
+
+  @media (max-width: 743px) {
+    form > button {
+    top: 10px;
+    right: 30px;
+  }
+  }
 `;
 
 const ModalZoom = (props) => {

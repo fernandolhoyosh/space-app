@@ -18,6 +18,16 @@ const HeaderEstilizado = styled.header`
       width: 190px;
     }
   }
+
+  @media (min-width: 1px) and (max-width: 743px) {
+    flex-direction: column;
+    align-items: end;
+    gap: 40px;
+    padding: 25px 0;
+    img {
+      width: 157px;
+    }
+  }
 `;
 
 const Cabecera = (props) => {

@@ -8,6 +8,11 @@ const Titulo = styled.h2`
     @media (min-width: 744px) and (max-width: 1425px) {
         font-size: 28px;
     }
+
+    @media (max-width: 743px) {
+        font-size: 20px;
+        text-align: center;
+    }
 `
 
 export default Titulo

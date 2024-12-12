@@ -8,6 +8,11 @@ const ListaStyles = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
+
+  @media (max-width: 743px) {
+    display: none;
+  }
+
 `;
 
 const BarraLateral = () => {

@@ -12,6 +12,10 @@ const GaleriaContainer = styled.div`
   @media (min-width: 744px) and (max-width: 1425px) {
     gap: 20px;
   }
+
+  @media (max-width: 743px) {
+    flex-direction: column;
+  }
 `;
 const SeccionFluida = styled.section`
   display: flex;

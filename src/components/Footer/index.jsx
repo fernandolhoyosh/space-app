@@ -4,6 +4,8 @@ const FooterStyle = styled.footer`
     margin-top: 70px;
     padding: 24px;
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: space-between;
     align-items: center;
     background-color: #04244f;

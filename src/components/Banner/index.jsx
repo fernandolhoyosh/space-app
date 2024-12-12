@@ -13,8 +13,12 @@ const FigureEstilizada = styled.figure`
   background-position: center;
   background-size: cover;
 
-  @media (min-width: 744px) and (max-width: 1425px) {
+  @media (min-width: 1px) and (max-width: 1425px) {
     height: auto;
+  }
+
+  @media (max-width: 743px) {
+    height: 150px;
   }
 `;
 
@@ -25,9 +29,16 @@ const TituloEstilizado = styled.h1`
   color: #ffffff;
   max-width: 300px;
   padding: 0 64px;
+  margin: 0;
 
   @media (min-width: 744px) and (max-width: 1425px) {
+    padding: 0 24px;
     font-size: 32px;
+  }
+
+  @media (max-width: 743px) {
+    font-size: 24px;
+    line-height: 40px;
   }
 `;
 

@@ -8,14 +8,24 @@ const ContainerFotos = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
+    justify-content: center;
+    align-items: center;
 `
 const Foto = styled.img`
     border-radius: 20px;
-    max-width: 212px;
+    width: 212px;
     height: 158px;
 
     @media (min-width: 744px) and (max-width: 1425px) {
-        max-width: 156px;
+        width: 156px;
+    }
+
+    @media (max-width: 743px) {
+        width: 310px;
+    }
+
+    @media (max-width: 360px) {
+        width: 100%;
     }
 `
 

@@ -31,12 +31,20 @@ const AppContainer = styled.div`
   @media (min-width: 744px) and (max-width: 1425px) {
     padding: 0 18px;
   }
+
+  @media (max-width: 380px) {
+    padding: 0 12px;
+  }
 `;
 
 const MainContainer = styled.main`
   display: flex;
   flex-direction: column;
   gap: 56px;
+
+  @media (max-width: 744px){
+    gap: 32px;
+  }
 `;
 
 const ContainerBarraBanner = styled.div`
@@ -45,6 +53,10 @@ const ContainerBarraBanner = styled.div`
 
   @media (min-width: 744px) and (max-width: 1425px) {
     gap: 52px;
+  }
+
+  @media (max-width: 743px) {
+    gap: 0;
   }
 `;
 
@@ -62,7 +74,7 @@ const ContenidoGaleria = styled.section`
     margin-left: 2%;
   }
 
-  @media (min-width: 744px) and (max-width: 799px) {
+  @media (max-width: 799px) {
     margin-left: 0;
   }
 `;
