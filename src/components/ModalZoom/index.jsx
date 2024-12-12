@@ -18,7 +18,7 @@ const DialogStyle = styled.dialog`
   display: flex;
   justify-content: center;
   width: 90%;
-  top: 100px;
+  top: 10%;
   background: transparent;
 
   form {
@@ -31,7 +31,6 @@ const DialogStyle = styled.dialog`
   }
 
   @media (min-width: 744px) and (max-width: 1425px) {
-    top: 150px;
     width: 96%;
   }
 

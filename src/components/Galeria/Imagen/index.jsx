@@ -11,28 +11,28 @@ const Figure = styled.figure`
   flex-grow: 1;
   & > img {
     max-width: 100%;
-    height: ${(props) => (props.$expandida ? "660px" : "256px")};
+    height: ${(props) => (props.$expandida ? "80vh" : "256px")};
     border-radius: 20px 20px 0 0;
   }
 
   @media (min-width: 1112px) and (max-width: 1425px) {
     width: ${(props) => (props.$expandida ? "100%" : "350px")};
     & > img {
-      height: ${(props) => (props.$expandida ? "560px" : "200px")};
+      height: ${(props) => (props.$expandida ? "70vh" : "200px")};
     }
   }
 
   @media (min-width: 744px) and (max-width: 1111px) {
     width: ${(props) => (props.$expandida ? "100%" : "245px")};
     & > img {
-      height: ${(props) => (props.$expandida ? "460px" : "150px")};
+      height: ${(props) => (props.$expandida ? "60vh" : "150px")};
     }
   }
 
-  @media (min-width: 1px) and (max-width: 743px) {
+  @media (min-width: 711px) and (max-width: 743px) {
     width: ${(props) => (props.$expandida ? "100%" : "311px")};
     & > img {
-      height: ${(props) => (props.$expandida ? "460px" : "180px")};
+      height: ${(props) => (props.$expandida ? "50vh" : "180px")};
     }
   }
 
