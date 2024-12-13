@@ -66,6 +66,7 @@ const ContainerBarraBanner = styled.div`
 const ContenidoGaleria = styled.section`
   display: flex;
   max-width: 1186px;
+  width: 100%;
   flex-direction: column;
   flex-grow: 1;
 `;
