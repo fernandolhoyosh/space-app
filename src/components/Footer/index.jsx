@@ -20,6 +20,13 @@ const FooterStyle = styled.footer`
     @media (min-width: 744px) and (max-width: 1425px) {
         margin-top: 48px;
     }
+
+    @media (max-width: 360px) {
+        margin-top: 30px;
+        padding: 16px;
+        flex-direction: column-reverse;
+        gap: 28px;
+    }
 `;
 
 const ContainerRedesSociales = styled.ul`

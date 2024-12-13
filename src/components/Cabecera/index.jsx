@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import CampoTexto from "../CampoTexto";
+import Menu from "./Menu";
 
 const HeaderEstilizado = styled.header`
   display: flex;
@@ -30,12 +31,38 @@ const HeaderEstilizado = styled.header`
   }
 `;
 
+  const BotonMenu = styled.button`
+    display: none;
+    position: absolute;
+    top: 36px;
+    left: 24px;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    width: 36px;
+    height: 36px;
+
+    & > img {
+      width: 36px;
+      height: 36px;
+    }
+
+    @media (max-width: 743px) {
+      display: block;
+    }
+
+  `
+
 const Cabecera = (props) => {
 
-  const {setFiltroInput} = props
+  const {setFiltroInput, activarMenu} = props
 
   return (
     <HeaderEstilizado>
+      <BotonMenu onClick={() => activarMenu()}>
+        <img src="iconos/menu.png" alt="Icono Menu" />
+      </BotonMenu>
       <img src="img/logo.png" alt="Logo de Space App" />
       <CampoTexto setFiltroInput={setFiltroInput} />
     </HeaderEstilizado>

@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import ItemNavegacion from "../ItemNavegacion";
 
+const AsideStyle = styled.aside`
+
+  @media (max-width: 743px) {
+    display: ${(props) => (props.$mostrarBarra ? "flex" : "none")};
+  }
+`;
+
 const ListaStyles = styled.ul`
   display: flex;
   flex-direction: column;
@@ -10,16 +17,16 @@ const ListaStyles = styled.ul`
   list-style: none;
 
   @media (max-width: 743px) {
-    display: none;
+    /* display: none; */
+    /* display: ${(props) => (props.$mostrarBarra ? "90%" : "448px")}; */
   }
-
 `;
 
-const BarraLateral = () => {
+const BarraLateral = ({ mostrarBarra }) => {
   const listaNavegacion = ["Inicio", "Más Vistas"];
 
   return (
-    <aside>
+    <AsideStyle $mostrarBarra={mostrarBarra}>
       <nav>
         <ListaStyles>
           <ItemNavegacion
@@ -55,7 +62,7 @@ const BarraLateral = () => {
           </ItemNavegacion>
         </ListaStyles>
       </nav>
-    </aside>
+    </AsideStyle>
   );
 };
 

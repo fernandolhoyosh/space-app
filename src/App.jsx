@@ -9,6 +9,7 @@ import Galeria from "./components/Galeria";
 import fotos from "./fotos.json";
 import ModalZoom from "./components/ModalZoom";
 import Footer from "./components/Footer";
+import Menu from "./components/Cabecera/Menu";
 
 const FondoGradiente = styled.div`
   background: linear-gradient(
@@ -40,6 +41,7 @@ const AppContainer = styled.div`
 const MainContainer = styled.main`
   display: flex;
   flex-direction: column;
+  align-items: end;
   gap: 56px;
 
   @media (max-width: 744px){
@@ -49,6 +51,7 @@ const MainContainer = styled.main`
 
 const ContainerBarraBanner = styled.div`
   display: flex;
+  width: 100%;
   gap: 14px;
 
   @media (min-width: 744px) and (max-width: 1425px) {
@@ -62,21 +65,9 @@ const ContainerBarraBanner = styled.div`
 
 const ContenidoGaleria = styled.section`
   display: flex;
-  margin-left: 15%;
+  max-width: 1186px;
   flex-direction: column;
   flex-grow: 1;
-
-  @media (max-width: 1030px) {
-    margin-left: 8%;
-  }
-
-  @media (min-width: 800px) and (max-width: 1029px) {
-    margin-left: 2%;
-  }
-
-  @media (max-width: 799px) {
-    margin-left: 0;
-  }
 `;
 
 const App = () => {
@@ -84,6 +75,11 @@ const App = () => {
   const [fotoSeleccionada, setFotoSeleccionada] = useState(null);
   const [filtroInput, setFiltroInput] = useState("");
   const [tag, setTag] = useState(0);
+  const [menu, setMenu] = useState(false);
+
+  const activarMenu = () => {
+    setMenu(!menu)
+  }
 
   const filtrarFotosPorTag = (idTag) => {
     setTag(idTag);
@@ -131,7 +127,8 @@ const App = () => {
       <FondoGradiente>
         <GlobalStyles />
         <AppContainer>
-          <Cabecera setFiltroInput={setFiltroInput} />
+        <Menu menu={menu} cerrar={() => setMenu(null)} />
+          <Cabecera setFiltroInput={setFiltroInput} activarMenu={activarMenu} />
           <MainContainer>
             <ContainerBarraBanner>
               <BarraLateral />

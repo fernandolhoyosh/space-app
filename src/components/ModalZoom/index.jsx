@@ -9,6 +9,7 @@ const Overlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 2;
 `;
 
 const DialogStyle = styled.dialog`
@@ -20,6 +21,7 @@ const DialogStyle = styled.dialog`
   width: 90%;
   top: 10%;
   background: transparent;
+  z-index: 2;
 
   form {
     width:0;

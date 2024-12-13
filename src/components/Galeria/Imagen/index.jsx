@@ -3,6 +3,7 @@ import BotonIcono from "../../BotonIcono";
 
 const Figure = styled.figure`
   display: flex;
+  /* flex: 1 1 448px; */
   box-sizing: border-box;
   flex-direction: column;
   margin: 0;
