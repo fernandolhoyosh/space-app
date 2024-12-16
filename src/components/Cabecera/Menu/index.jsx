@@ -33,7 +33,7 @@ const Menu = ({menu, cerrar}) => {
   return (
     <>
       {menu && (
-        <DialogMenu open={!!menu} onClose={cerrar}>
+        <DialogMenu open={!!menu} onClose={cerrar} onMouseLeave={cerrar}>
           <BarraLateral mostrarBarra={menu} />
           <form method="dialog">
             <BotonIcono formMethod="dialog">
