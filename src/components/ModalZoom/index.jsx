@@ -53,7 +53,7 @@ const ModalZoom = (props) => {
         <>
           <Overlay />
           <DialogStyle open={!!foto} onClose={alCerrar}>
-            {console.log(<DialogStyle />)}
+            {/* {console.log(<DialogStyle />)} */}
             <Imagen foto={foto} expandida={true} alternarFavorito={alternarFavorito} />
             <form method="dialog">
               <BotonIcono formMethod="dialog">

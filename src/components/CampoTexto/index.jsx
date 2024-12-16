@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import styled from "styled-components"
 import Search from "./search.png"
 
@@ -40,6 +40,7 @@ const IconoBuscar = styled.img`
     right: 10px;
     width: 38px !important;
     height: 38px;
+    cursor: pointer;
 
     @media (min-width: 744px) and (max-width: 1425px) {
         top: 14px;
@@ -51,13 +52,15 @@ const IconoBuscar = styled.img`
 `
 
 const CampoTexto = (props) => {
-
+    const cajaConsulta = useRef(null);
     const {setFiltroInput} = props
 
     return (
         <ContainerStyles>
-            <InputStyles type="text" placeholder="¿Qué estas buscando?" onChange={(e) => setFiltroInput(e.target.value)} />
-            <IconoBuscar src={Search} alt="Icono Lupa" />
+            <InputStyles ref={cajaConsulta} type="text" placeholder="¿Qué estas buscando?" />
+            <IconoBuscar src={Search} alt="Icono Lupa" onClick={() => {
+                setFiltroInput(cajaConsulta.current.value)
+            }} />
         </ContainerStyles>
     )
 }

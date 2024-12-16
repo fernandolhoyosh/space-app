@@ -98,7 +98,8 @@ const App = () => {
     const fotosFiltradas = fotos.filter((foto) => {
       const filtroText =
         !filtroInput ||
-        foto.titulo.toLowerCase().includes(filtroInput.toLowerCase());
+        foto.titulo.toLocaleLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")
+          .includes(filtroInput.toLocaleLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""));
       return filtroText;
     });
     setFotosGaleria(fotosFiltradas);
