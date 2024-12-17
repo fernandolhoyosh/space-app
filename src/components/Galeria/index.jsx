@@ -3,6 +3,7 @@ import Titulo from "../Titulo";
 import Populares from "./Populares";
 import styled from "styled-components";
 import Imagen from "./Imagen";
+import Cargando from "../Cargando";
 
 const GaleriaContainer = styled.div`
   display: flex;
@@ -35,6 +36,8 @@ const Galeria = (props) => {
     <>
       <Tags filtrarFotosPorTag= {filtrarFotosPorTag} />
       <GaleriaContainer>
+      {
+      fotos.length == 0 ? <Cargando /> : 
         <SeccionFluida>
           <Titulo>Navegue por la galeria</Titulo>
           <FigureContainer>
@@ -43,6 +46,7 @@ const Galeria = (props) => {
             ))}
           </FigureContainer>
         </SeccionFluida>
+        }
         <Populares />
       </GaleriaContainer>
     </>

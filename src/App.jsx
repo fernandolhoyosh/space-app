@@ -6,7 +6,6 @@ import BarraLateral from "./components/BarraLateral";
 import Banner from "./components/Banner";
 import banner from "./assets/banner.png";
 import Galeria from "./components/Galeria";
-import fotos from "./fotos.json";
 import ModalZoom from "./components/ModalZoom";
 import Footer from "./components/Footer";
 import Menu from "./components/Cabecera/Menu";
@@ -72,7 +71,8 @@ const ContenidoGaleria = styled.section`
 `;
 
 const App = () => {
-  const [fotosGaleria, setFotosGaleria] = useState(fotos);
+  const [dataApi, setDataApi] = useState([]);
+  const [fotosGaleria, setFotosGaleria] = useState([]);
   const [fotoSeleccionada, setFotoSeleccionada] = useState(null);
   const [filtroInput, setFiltroInput] = useState("");
   const [tag, setTag] = useState(0);
@@ -87,7 +87,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    const fotosFiltradas = fotos.filter((foto) => {
+    const fotosFiltradas = dataApi.filter((foto) => {
       const filtroTag = !tag || foto.tagId === tag;
       return filtroTag;
     });
@@ -95,7 +95,7 @@ const App = () => {
   }, [tag]);
 
   useEffect(() => {
-    const fotosFiltradas = fotos.filter((foto) => {
+    const fotosFiltradas = dataApi.filter((foto) => {
       const filtroText =
         !filtroInput ||
         foto.titulo.toLocaleLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")
@@ -123,6 +123,18 @@ const App = () => {
       })
     );
   };
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetch("http://localhost:3000/fotos");
+      const data = await response.json();
+      setDataApi([...data]);
+      setFotosGaleria([...data])
+    }
+    setTimeout(() => getData(),3000);
+  }, [])
+
+  
 
   return (
     <>
