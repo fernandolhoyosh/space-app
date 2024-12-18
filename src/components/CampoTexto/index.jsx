@@ -1,4 +1,4 @@
-import { useRef, useContext } from "react";
+import { useContext, useRef } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 import styled from "styled-components"
 import Search from "./search.png"
@@ -54,14 +54,13 @@ const IconoBuscar = styled.img`
 
 const CampoTexto = () => {
     const cajaConsulta = useRef(null);
-
-    const {setFiltroInput} = useContext(GlobalContext)
+    const {dispatch} = useContext(GlobalContext)
 
     return (
         <ContainerStyles>
             <InputStyles ref={cajaConsulta} type="text" placeholder="¿Qué estas buscando?" />
             <IconoBuscar src={Search} alt="Icono Lupa" onClick={() => {
-                setFiltroInput(cajaConsulta.current.value)
+                dispatch({type: 'SET_FILTRO', payload: cajaConsulta.current.value})
             }} />
         </ContainerStyles>
     )

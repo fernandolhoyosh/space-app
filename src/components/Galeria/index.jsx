@@ -33,17 +33,23 @@ const FigureContainer = styled.section`
 `;
 
 const Galeria = () => {
-  const { fotosGaleria = []} = useContext(GlobalContext);
+  const {state} = useContext(GlobalContext)
+  /* const { fotosGaleria = []} = useContext(GlobalContext); */
   return (
     <>
       <Tags />
       <GaleriaContainer>
       {
-      fotosGaleria.length == 0 ? <Cargando /> : 
+      state.fotosGaleria.length == 0 ? <Cargando /> : 
         <SeccionFluida>
           <Titulo>Navegue por la galeria</Titulo>
           <FigureContainer>
-            {fotosGaleria.map((foto) => (
+            {state.fotosGaleria.filter(foto => {
+              const filtroText = !state.filtroInput || foto.titulo.toLocaleLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")
+              .includes(state.filtroInput.toLocaleLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""));
+              return filtroText;
+            })
+            .map(foto => (
               <Imagen key={foto.id} foto={foto} />
             ))}
           </FigureContainer>

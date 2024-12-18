@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { GlobalContextProvider } from "./context/GlobalContext";
 import styled from "styled-components";
 import GlobalStyles from "./components/GlobalStyles";

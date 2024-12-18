@@ -48,16 +48,16 @@ const DialogStyle = styled.dialog`
 
 const ModalZoom = () => {
 
-  const { fotoSeleccionada, setFotoSeleccionada } = useContext(GlobalContext);
+  const {state, dispatch} = useContext(GlobalContext)
 
   return (
     <>
-      {fotoSeleccionada && (
+      {state.fotoSeleccionada && (
         <>
           <Overlay />
-          <DialogStyle open={!!fotoSeleccionada} onClose={() => setFotoSeleccionada(null)}>
+          <DialogStyle open={!!state.fotoSeleccionada} onClose={() => dispatch({ type:'SET_FOTO_SELECCIONADA', payload: null })}>
             {/* {console.log(<DialogStyle />)} */}
-            <Imagen foto={fotoSeleccionada} expandida={true} />
+            <Imagen foto={state.fotoSeleccionada} expandida={true} />
             <form method="dialog">
               <BotonIcono formMethod="dialog">
                 <img src="/iconos/cerrar.png" alt="Icono Cerrar" />

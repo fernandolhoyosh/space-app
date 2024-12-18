@@ -106,7 +106,7 @@ const ContainerBotones = styled.div`
 `;
 
 const Imagen = (props) => {
-  const { setFotoSeleccionada, alternarFavorito } = useContext(GlobalContext);
+  const { dispatch } = useContext(GlobalContext);
   const { foto, expandida = false } = props;
   const { id, titulo, path, fuente, favorita } = props.foto;
 
@@ -121,10 +121,10 @@ const Imagen = (props) => {
           <p>{fuente}</p>
         </Figcaption>
         <ContainerBotones>
-          <BotonIcono onClick={()=>alternarFavorito(foto)}>
+          <BotonIcono onClick={()=>dispatch({type: 'ALTERNAR_FAVORITO', payload:foto})}>
             <img src={iconoFavorito} alt="Icono Favorito" />
           </BotonIcono>
-          { !expandida && <BotonIcono aria-hidden={expandida} onClick={() => setFotoSeleccionada(foto)}>
+          { !expandida && <BotonIcono aria-hidden={expandida} onClick={() => dispatch({type: 'SET_FOTO_SELECCIONADA', payload: foto})}>
             <img src="/iconos/expandir.png" alt="Icono Expandir" />
           </BotonIcono> }
         </ContainerBotones>
