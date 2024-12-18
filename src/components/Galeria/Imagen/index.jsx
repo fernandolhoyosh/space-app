@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import BotonIcono from "../../BotonIcono";
+import { useContext } from "react";
+import { GlobalContext } from "../../../context/GlobalContext";
 
 const Figure = styled.figure`
   display: flex;
@@ -104,7 +106,8 @@ const ContainerBotones = styled.div`
 `;
 
 const Imagen = (props) => {
-  const { foto, expandida = false, solicitarZoom, alternarFavorito } = props;
+  const { setFotoSeleccionada, alternarFavorito } = useContext(GlobalContext);
+  const { foto, expandida = false } = props;
   const { id, titulo, path, fuente, favorita } = props.foto;
 
   const iconoFavorito = favorita ? "/iconos/favorito-activo.png" : "/iconos/favorito.png";
@@ -121,7 +124,7 @@ const Imagen = (props) => {
           <BotonIcono onClick={()=>alternarFavorito(foto)}>
             <img src={iconoFavorito} alt="Icono Favorito" />
           </BotonIcono>
-          { !expandida && <BotonIcono aria-hidden={expandida} onClick={() => solicitarZoom(foto)}>
+          { !expandida && <BotonIcono aria-hidden={expandida} onClick={() => setFotoSeleccionada(foto)}>
             <img src="/iconos/expandir.png" alt="Icono Expandir" />
           </BotonIcono> }
         </ContainerBotones>

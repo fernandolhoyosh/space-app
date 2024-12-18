@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { GlobalContextProvider } from "./context/GlobalContext";
 import styled from "styled-components";
 import GlobalStyles from "./components/GlobalStyles";
 import Cabecera from "./components/Cabecera";
@@ -71,78 +72,14 @@ const ContenidoGaleria = styled.section`
 `;
 
 const App = () => {
-  const [dataApi, setDataApi] = useState([]);
-  const [fotosGaleria, setFotosGaleria] = useState([]);
-  const [fotoSeleccionada, setFotoSeleccionada] = useState(null);
-  const [filtroInput, setFiltroInput] = useState("");
-  const [tag, setTag] = useState(0);
-  const [menu, setMenu] = useState(false);
-
-  const activarMenu = () => {
-    setMenu(!menu)
-  }
-
-  const filtrarFotosPorTag = (idTag) => {
-    setTag(idTag);
-  };
-
-  useEffect(() => {
-    const fotosFiltradas = dataApi.filter((foto) => {
-      const filtroTag = !tag || foto.tagId === tag;
-      return filtroTag;
-    });
-    setFotosGaleria(fotosFiltradas);
-  }, [tag]);
-
-  useEffect(() => {
-    const fotosFiltradas = dataApi.filter((foto) => {
-      const filtroText =
-        !filtroInput ||
-        foto.titulo.toLocaleLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")
-          .includes(filtroInput.toLocaleLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""));
-      return filtroText;
-    });
-    setFotosGaleria(fotosFiltradas);
-  }, [filtroInput]);
-
-  const alternarFavorito = (foto) => {
-    if (foto.id === fotoSeleccionada?.id) {
-      setFotoSeleccionada({
-        ...fotoSeleccionada,
-        favorita: !foto.favorita,
-      });
-    }
-
-    setFotosGaleria(
-      fotosGaleria.map((fotoGaleria) => {
-        return {
-          ...fotoGaleria,
-          favorita:
-            fotoGaleria.id === foto.id ? !foto.favorita : fotoGaleria.favorita,
-        };
-      })
-    );
-  };
-
-  useEffect(() => {
-    const getData = async () => {
-      const response = await fetch("http://localhost:3000/fotos");
-      const data = await response.json();
-      setDataApi([...data]);
-      setFotosGaleria([...data])
-    }
-    setTimeout(() => getData(),3000);
-  }, [])
-
-  
 
   return (
-    <>
+    <GlobalContextProvider>
       <FondoGradiente>
         <GlobalStyles />
         <AppContainer>
-        <Menu menu={menu} cerrar={() => setMenu(null)} />
-          <Cabecera setFiltroInput={setFiltroInput} activarMenu={activarMenu} />
+        <Menu />
+          <Cabecera />
           <MainContainer>
             <ContainerBarraBanner>
               <BarraLateral />
@@ -152,23 +89,14 @@ const App = () => {
               />
             </ContainerBarraBanner>
             <ContenidoGaleria>
-              <Galeria
-                fotos={fotosGaleria}
-                abrirFoto={(foto) => setFotoSeleccionada(foto)}
-                alternarFavorito={alternarFavorito}
-                filtrarFotosPorTag={filtrarFotosPorTag}
-              />
+              <Galeria />
             </ContenidoGaleria>
           </MainContainer>
         </AppContainer>
-        <ModalZoom
-          foto={fotoSeleccionada}
-          alCerrar={() => setFotoSeleccionada(null)}
-          alternarFavorito={alternarFavorito}
-        />
+        <ModalZoom />
         <Footer />
       </FondoGradiente>
-    </>
+    </GlobalContextProvider>
   );
 };
 

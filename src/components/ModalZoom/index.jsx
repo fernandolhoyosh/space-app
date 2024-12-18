@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
 import styled from "styled-components";
 import Imagen from "../Galeria/Imagen";
 import BotonIcono from "../BotonIcono";
@@ -44,17 +46,18 @@ const DialogStyle = styled.dialog`
   }
 `;
 
-const ModalZoom = (props) => {
-  const { foto, alCerrar, alternarFavorito } = props;
+const ModalZoom = () => {
+
+  const { fotoSeleccionada, setFotoSeleccionada } = useContext(GlobalContext);
 
   return (
     <>
-      {foto && (
+      {fotoSeleccionada && (
         <>
           <Overlay />
-          <DialogStyle open={!!foto} onClose={alCerrar}>
+          <DialogStyle open={!!fotoSeleccionada} onClose={() => setFotoSeleccionada(null)}>
             {/* {console.log(<DialogStyle />)} */}
-            <Imagen foto={foto} expandida={true} alternarFavorito={alternarFavorito} />
+            <Imagen foto={fotoSeleccionada} expandida={true} />
             <form method="dialog">
               <BotonIcono formMethod="dialog">
                 <img src="/iconos/cerrar.png" alt="Icono Cerrar" />

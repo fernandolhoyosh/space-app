@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { GlobalContext } from "../../../context/GlobalContext";
 import styled from "styled-components";
 import BarraLateral from "../../BarraLateral";
 import BotonIcono from "../../BotonIcono";
@@ -28,12 +30,14 @@ const DialogMenu = styled.dialog`
   }
 `;
 
-const Menu = ({menu, cerrar}) => {
+const Menu = () => {
+
+  const {menu, setMenu} = useContext(GlobalContext);
 
   return (
     <>
       {menu && (
-        <DialogMenu open={!!menu} onClose={cerrar} onMouseLeave={cerrar}>
+        <DialogMenu open={!!menu} onClose={() => setMenu(null)} onMouseLeave={() => setMenu(null)}>
           <BarraLateral mostrarBarra={menu} />
           <form method="dialog">
             <BotonIcono formMethod="dialog">

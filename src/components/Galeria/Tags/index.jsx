@@ -1,3 +1,5 @@
+import { useContext } from "react"
+import { GlobalContext } from "../../../context/GlobalContext"
 import styled from "styled-components"
 import tags from "./tags.json"
 
@@ -54,13 +56,13 @@ const BotonTag = styled.button`
     }
 `
 
-const Tags = (props) => {
-    const {filtrarFotosPorTag} = props
+const Tags = () => {
+    const {setTag} = useContext(GlobalContext)
 
     return <ContainerTags>
         <TagTitulo>Buscar por tags:</TagTitulo>
         {tags.map(tag => {
-            return <BotonTag key={tag.id} onClick={()=>filtrarFotosPorTag(tag.id)}>{tag.titulo}</BotonTag>
+            return <BotonTag key={tag.id} onClick={()=>setTag(tag.id)}>{tag.titulo}</BotonTag>
         })}
     </ContainerTags>
 }

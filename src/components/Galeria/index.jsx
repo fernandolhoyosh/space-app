@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
 import Tags from "./Tags";
 import Titulo from "../Titulo";
 import Populares from "./Populares";
@@ -30,19 +32,19 @@ const FigureContainer = styled.section`
   gap: 24px;
 `;
 
-const Galeria = (props) => {
-  const { fotos = [], abrirFoto, alternarFavorito, filtrarFotosPorTag } = props;
+const Galeria = () => {
+  const { fotosGaleria = []} = useContext(GlobalContext);
   return (
     <>
-      <Tags filtrarFotosPorTag= {filtrarFotosPorTag} />
+      <Tags />
       <GaleriaContainer>
       {
-      fotos.length == 0 ? <Cargando /> : 
+      fotosGaleria.length == 0 ? <Cargando /> : 
         <SeccionFluida>
           <Titulo>Navegue por la galeria</Titulo>
           <FigureContainer>
-            {fotos.map((foto) => (
-              <Imagen key={foto.id} foto={foto} solicitarZoom={abrirFoto} alternarFavorito={alternarFavorito} />
+            {fotosGaleria.map((foto) => (
+              <Imagen key={foto.id} foto={foto} />
             ))}
           </FigureContainer>
         </SeccionFluida>

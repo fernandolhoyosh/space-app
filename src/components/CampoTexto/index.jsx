@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useRef, useContext } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
 import styled from "styled-components"
 import Search from "./search.png"
 
@@ -51,9 +52,10 @@ const IconoBuscar = styled.img`
     }
 `
 
-const CampoTexto = (props) => {
+const CampoTexto = () => {
     const cajaConsulta = useRef(null);
-    const {setFiltroInput} = props
+
+    const {setFiltroInput} = useContext(GlobalContext)
 
     return (
         <ContainerStyles>

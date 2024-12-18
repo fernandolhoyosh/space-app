@@ -1,6 +1,7 @@
+import { useContext } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
 import styled from "styled-components";
 import CampoTexto from "../CampoTexto";
-import Menu from "./Menu";
 
 const HeaderEstilizado = styled.header`
   display: flex;
@@ -54,17 +55,17 @@ const HeaderEstilizado = styled.header`
 
   `
 
-const Cabecera = (props) => {
+const Cabecera = () => {
 
-  const {setFiltroInput, activarMenu} = props
+  const {menu, setMenu} = useContext(GlobalContext)
 
   return (
     <HeaderEstilizado>
-      <BotonMenu onClick={() => activarMenu()}>
+      <BotonMenu onClick={() => setMenu(!menu)}>
         <img src="iconos/menu.png" alt="Icono Menu" />
       </BotonMenu>
       <img src="img/logo.png" alt="Logo de Space App" />
-      <CampoTexto setFiltroInput={setFiltroInput} />
+      <CampoTexto />
     </HeaderEstilizado>
   );
 };
