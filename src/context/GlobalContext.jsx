@@ -5,7 +5,8 @@ const GlobalContext = createContext();
 const initialState = {
   filtroInput: '',
   fotosGaleria: [],
-  fotoSeleccionada: null
+  fotoSeleccionada: null,
+  modalAbierto: false
 }
 
 const reducer = (state, action) => {
@@ -15,9 +16,12 @@ const reducer = (state, action) => {
     case 'SET_FOTOS_GALERIA':
       return {...state, fotosGaleria: action.payload}
     case 'SET_FOTO_SELECCIONADA':
-      return {...state, fotoSeleccionada: action.payload}
+      return {...state,
+        fotoSeleccionada: action.payload,
+        modalAbierto: action.payload != null ? true : false
+      }
     case 'ALTERNAR_FAVORITO':
-      const fotosGaleria = state.fotosGaleria.map((fotoGaleria) => {
+      { const fotosGaleria = state.fotosGaleria.map((fotoGaleria) => {
         return {
           ...fotoGaleria,
           favorita:
@@ -37,7 +41,7 @@ const reducer = (state, action) => {
         ...state,
         fotosGaleria: fotosGaleria 
       }
-    }
+    } }
       default:
         return state;
   }
@@ -87,6 +91,7 @@ const GlobalContextProvider = ({ children }) => {
         dispatch,
         menu,
         setMenu,
+        tag,
         setTag,
       }}
     >

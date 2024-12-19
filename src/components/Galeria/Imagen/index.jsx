@@ -2,6 +2,7 @@ import styled from "styled-components";
 import BotonIcono from "../../BotonIcono";
 import { useContext } from "react";
 import { GlobalContext } from "../../../context/GlobalContext";
+import useFotoModal from "../../../hooks/useFotoModal";
 
 const Figure = styled.figure`
   display: flex;
@@ -106,6 +107,7 @@ const ContainerBotones = styled.div`
 `;
 
 const Imagen = (props) => {
+  const { abrirModal } = useFotoModal();
   const { dispatch } = useContext(GlobalContext);
   const { foto, expandida = false } = props;
   const { id, titulo, path, fuente, favorita } = props.foto;
@@ -124,7 +126,7 @@ const Imagen = (props) => {
           <BotonIcono onClick={()=>dispatch({type: 'ALTERNAR_FAVORITO', payload:foto})}>
             <img src={iconoFavorito} alt="Icono Favorito" />
           </BotonIcono>
-          { !expandida && <BotonIcono aria-hidden={expandida} onClick={() => dispatch({type: 'SET_FOTO_SELECCIONADA', payload: foto})}>
+          { !expandida && <BotonIcono aria-hidden={expandida} onClick={() => abrirModal(foto)}>
             <img src="/iconos/expandir.png" alt="Icono Expandir" />
           </BotonIcono> }
         </ContainerBotones>
