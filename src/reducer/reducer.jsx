@@ -2,6 +2,7 @@ const initialState = {
     fotosGaleria: [],
     filtroInput: '',
     filtroTag: 0,
+    fotosFiltradas: [],
     fotoSeleccionada: null,
     modalAbierto: false
   }

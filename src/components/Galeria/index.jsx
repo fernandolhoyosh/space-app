@@ -1,4 +1,4 @@
-import { useContext, useMemo } from "react";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 import Tags from "./Tags";
 import Titulo from "../Titulo";
@@ -34,7 +34,7 @@ const FigureContainer = styled.section`
 
 const Galeria = () => {
   const {state} = useContext(GlobalContext);
-  
+
   const fotosFiltradas = state.fotosGaleria.filter((foto) => {
     const filtroTag = !state.filtroTag || foto.tagId === state.filtroTag
     const filtroText = !state.filtroInput || foto.titulo.toLocaleLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")
@@ -47,7 +47,7 @@ const Galeria = () => {
       <Tags />
       <GaleriaContainer>
       {
-      state.fotosGaleria.length == 0 ? <Cargando /> : 
+      state.fotosGaleria.length == 0 ? <Cargando /> :
         <SeccionFluida>
           <Titulo>Navegue por la galeria</Titulo>
           <FigureContainer>

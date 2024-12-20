@@ -16,6 +16,7 @@ const LoadingStyle = styled.div`
         margin: 0;
         color: #FFFFFF;
         text-align: center;
+        /* display: ${(props) => (props.$length !== 0 ? "block" : "none")}; */
     }
 
     @media (max-width: 744px) {
