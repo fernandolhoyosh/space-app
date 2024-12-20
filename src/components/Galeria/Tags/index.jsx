@@ -57,12 +57,17 @@ const BotonTag = styled.button`
 `
 
 const Tags = () => {
-    const {setTag} = useContext(GlobalContext)
+    const { dispatch } = useContext(GlobalContext)
+
+    const handleSetTag = (tag) => {
+        dispatch({type: 'SET_FILTRO', payload: ""})
+        dispatch({type: 'SET_TAG', payload: tag})
+    }
 
     return <ContainerTags>
         <TagTitulo>Buscar por tags:</TagTitulo>
         {tags.map(tag => {
-            return <BotonTag key={tag.id} onClick={()=>setTag(tag.id)}>{tag.titulo}</BotonTag>
+            return <BotonTag key={tag.id} onClick={()=>handleSetTag(tag.id)}>{tag.titulo}</BotonTag>
         })}
     </ContainerTags>
 }

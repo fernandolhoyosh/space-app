@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 import Tags from "./Tags";
 import Titulo from "../Titulo";
@@ -33,12 +33,13 @@ const FigureContainer = styled.section`
 `;
 
 const Galeria = () => {
-  const {state, tag} = useContext(GlobalContext);
+  const {state} = useContext(GlobalContext);
   
   const fotosFiltradas = state.fotosGaleria.filter((foto) => {
+    const filtroTag = !state.filtroTag || foto.tagId === state.filtroTag
     const filtroText = !state.filtroInput || foto.titulo.toLocaleLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")
     .includes(state.filtroInput.toLocaleLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""));
-    return filtroText;
+    return filtroText && filtroTag;
   })
 
   return (

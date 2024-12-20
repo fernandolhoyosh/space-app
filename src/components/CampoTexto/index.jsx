@@ -54,12 +54,13 @@ const IconoBuscar = styled.img`
 
 const CampoTexto = () => {
     const cajaConsulta = useRef(null);
-    const {dispatch} = useContext(GlobalContext)
+    const { dispatch } = useContext(GlobalContext)
 
     return (
         <ContainerStyles>
             <InputStyles ref={cajaConsulta} type="text" placeholder="¿Qué estas buscando?" />
             <IconoBuscar src={Search} alt="Icono Lupa" onClick={() => {
+                dispatch({type: 'SET_TAG', payload: 0})
                 dispatch({type: 'SET_FILTRO', payload: cajaConsulta.current.value})
             }} />
         </ContainerStyles>
